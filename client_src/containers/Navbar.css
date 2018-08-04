@@ -1,0 +1,21 @@
+.outer{
+  color : white;
+  background: black;
+  padding : 6px 24px;
+  display : flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tab{
+  font-family: 'Courier New', Courier, monospace;
+  font-size : 24px;
+  margin : 12px;
+}
+
+.tab:hover{
+  color: yellow;
+}
+
+
+
