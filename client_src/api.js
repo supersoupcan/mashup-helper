@@ -1,4 +1,5 @@
 import axios from 'axios';
+import config from './config';
 
 axios.defaults.baseUrl = 'api'
 
@@ -12,9 +13,9 @@ const api = {
       '/spotify/search', 
       { params : {
         q : params.query,
-        type : params.type.join(','),
-        limit : 10,
-        offset : 10 * params.next || 0,
+        type : params.type,
+        limit : config.searchLimit,
+        offset : params.offset || 0
       }}
     )
   }

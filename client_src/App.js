@@ -5,7 +5,6 @@ import api from './api';
 
 import { Helmet } from 'react-helmet';
 
-import Page from './presentational/Page';
 import Navbar from './containers/Navbar';
 import Footer from './containers/Footer';
 
@@ -32,10 +31,8 @@ class App extends Component{
 
   createPageRoute(index, pageRoute){
     const { path, exact, title, component, props } = pageRoute;
-    const commonProps = {
-      asyncCreator : this.props.asyncCreator,
-      auth : this.props.auth,
-    }
+    const { asyncCreator, auth } = this.props;
+    const commonProps = { asyncCreator, auth };
 
     return (
       <Route path={path} exact={exact} key={index}>
@@ -43,16 +40,16 @@ class App extends Component{
           <Helmet>
             <title>{title}</title>
           </Helmet>
-          <Navbar 
-            asyncCreator={this.props.asyncCreator}
-            auth={this.props.auth}
+          <Navbar
+            asyncCreator={asyncCreator}
+            auth={auth}
           />
-          <Page>
+          <div className={styles.appMargins}>
             {React.createElement(
               component,
               Object.assign({}, commonProps, props)
             )}
-          </Page>
+          </div>
           <Footer />
         </div>
       </Route>
@@ -62,13 +59,13 @@ class App extends Component{
     const pageRoutes = [{
       path : '/',
       exact : true,
-      title : 'Home',
+      title : 'Mashup Helper',
       component : Home,
       props : {}
     },{
       path : '/select',
       exact : false,
-      title : 'Add Tracks',
+      title : 'Track Bank',
       component : Select,
       props : {}
     }]

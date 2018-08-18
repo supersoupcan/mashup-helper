@@ -1,37 +1,28 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import styles from './Home.css';
+
 export default class Home extends Component{
   constructor(props){
     super();
   }
   render(){
-    if(this.props.auth.session){
-      return(<Redirect to='/select'/> )
-    }else{
-      return(
-        <Message />
-      )
-    }
-  }
-}
-
-
-const Message = (props) => {
-  return(
-    <div>
-      <div>
-        This websites lets you assemble tracks using Spotify Webservices
-        and sort/filter the assembled tracks by tempo and key, 
-        allowing one to quickly figure out songs could be mashed to pleasent effect.
-      </div>
-      <div>
-        This website uses Spotify webservices, so you must be signed in to a Spotify account to use it.
-        No need to worry. No information is recorded on my end.
-      </div>
-      <div>
-        I do hope this website helps inspire weird soundcloud madness. Enjoy!
-      </div>
+    return(
+      <div className={styles.container}>
+      <p>
+        This websites lets you sort and filter a collection of tracks by tempo and key.
+        Track data can be added manually, or pulled from Spotify Webservices. 
+        As you can imagine, this makes it easy to find inspiration for your next Weird SoundCloud mashup.
+      </p>
+      <p>
+        To use Spotify Webservices, you must authenticate through Spotify.
+        Don't worry. No data is stored on my end.
+      </p>
+      <p>
+        I hope you will find this website helpful. Enjoy!
+      </p>
     </div>
-  )
+    )
+  }
 }

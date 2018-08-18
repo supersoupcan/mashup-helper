@@ -5,7 +5,7 @@ router.all('*', (req, res, next) => {
   if(!req.session.passport.user.accessToken){
     res.status(401);
     res.json({
-      error : "must be signed in with a spotify account"
+      error: "must be signed in with a spotify account"
     })
   }else{
     next();
@@ -15,19 +15,17 @@ router.all('*', (req, res, next) => {
 router.get('/search*', async (req, res) => {
   try{
     const APIres = await axios.get('https://api.spotify.com/v1/search', {
-      params : req.query,
-      headers : {
-        'Authorization' : 'Bearer ' + req.session.passport.user.accessToken 
+      params: req.query,
+      headers: {
+        'Authorization': 'Bearer ' + req.session.passport.user.accessToken 
       }
     });
-
-    console.log(APIres);
-    res.status(200).json(APIres);
+    console.log(APIres.data[req.query.type + 's']);
+    res.status(200).json(APIres.data[req.query.type + 's']);
   }
   catch(error){
-    console.log(error);
     res.status(500).json({
-      error : "server error"
+      error: "server error"
     })
   }
 })

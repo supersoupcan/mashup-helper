@@ -1,3 +1,5 @@
+import config from '../config';
+
 export default function asyncCreator(promise, events){
   const { resolve, reject, pending} = events;
   //Provides a basic interface for handling async requests
@@ -5,12 +7,12 @@ export default function asyncCreator(promise, events){
     function createCommands(commands, payload){
       function create(command){
         switch(typeof command){
-          case 'function' : {
+          case 'function': {
             //CALL COMMAND AS FUNCTION
             command(payload);
             break;
           }
-          case 'string' : {
+          case 'string': {
             //DISPATCH COMMAND AS REDUX ACTION TYPE
             dispatch({
               type: command,
@@ -28,13 +30,13 @@ export default function asyncCreator(promise, events){
         create(commands);
       }
     }
-
+    
     createCommands(pending);
     try{
       const res = await Promise.race([
         promise,
-        new Promise((resolve, reject) => window.setTimeout(
-          () => reject(new Error('async action timeout')), 3000
+        new Promise((_, reject) => window.setTimeout(
+          () => reject(new Error('async timeout')), config.asyncTimeout
         ))
       ]);
 

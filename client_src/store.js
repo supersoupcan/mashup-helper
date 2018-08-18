@@ -6,11 +6,11 @@ import auth from './reducers/auth';
 
 export default createStore(
   combineReducers({ auth }),{
-    auth : {
-      session : null,
-      ui : {
-        pending : false,
-        error : null
+    auth: {
+      session: null,
+      ui: {
+        pending: false,
+        error: null
       },
     },
   },

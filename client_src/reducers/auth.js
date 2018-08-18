@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
 const ui = (state = {}, action) => {
-  const { payload } = action;
-  switch(action.type){
+  const { type, payload } = action;
+  switch(type){
     case 'AUTH_UI_PENDING' : {
       return state = Object.assign({}, state, {
         pending : true,
@@ -24,8 +24,8 @@ const ui = (state = {}, action) => {
 }
 
 const session = (state = {}, action) => {
-  const { payload } = action;
-  switch(action.type){
+  const { type, payload } = action;
+  switch(type){
     case 'AUTH_SESSION_RESOLVED' : {
       return state = payload;
     }
