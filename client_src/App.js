@@ -84,8 +84,8 @@ class App extends Component{
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  asyncCreator : (promiseFunc, promiseFuncArgvsArr, on) => {
-    dispatch(asyncCreator(promiseFunc, promiseFuncArgvsArr, on));
+  asyncCreator : (promise, events) => {
+    dispatch(asyncCreator(promise, events));
   }
 })
 
