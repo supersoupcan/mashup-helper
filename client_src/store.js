@@ -3,9 +3,10 @@ import loggerMiddleware from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 
 import auth from './reducers/auth';
+import collections from './reducers/collections';
 
 export default createStore(
-  combineReducers({ auth }),{
+  combineReducers({ auth, collections }),{
     auth: {
       session: null,
       ui: {
@@ -13,6 +14,7 @@ export default createStore(
         error: null
       },
     },
+    collections : []
   },
   applyMiddleware(thunkMiddleware, loggerMiddleware)
 )

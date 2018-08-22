@@ -13,9 +13,8 @@ const api = {
       '/spotify/search', 
       { params : {
         q : params.query,
-        type : params.type,
+        type : 'album,artist,playlist,track',
         limit : config.searchLimit,
-        offset : params.offset || 0
       }}
     )
   }

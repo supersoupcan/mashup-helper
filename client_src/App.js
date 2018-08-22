@@ -24,8 +24,8 @@ class App extends Component{
   componentDidMount(){
     this.props.asyncCreator(api.auth.session(), {
       pending : 'AUTH_UI_PENDING',
-      resolve : ['AUTH_SESSION_RESOLVED', 'AUTH_UI_RESOLVED'],
-      reject : 'ACTION_UI_REJECTED',
+      response: 'AUTH_UI_RESPONSE',
+      resolve : 'AUTH_SESSION_RESOLVE',
     })
   }
 
@@ -67,7 +67,7 @@ class App extends Component{
       exact : false,
       title : 'Track Bank',
       component : Select,
-      props : {}
+      props : { collections : this.props.collections }
     }]
     
     return(
@@ -81,13 +81,17 @@ class App extends Component{
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  asyncCreator : (promise, events) => {
+  asyncCreator: (promise, events) => {
     dispatch(asyncCreator(promise, events));
+  },
+  dispatch: (action) => {
+    dispatch(action)
   }
 })
 
 const mapStateToProps = (state) => ({
   auth : state.auth,
+  collections: state.collections
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
