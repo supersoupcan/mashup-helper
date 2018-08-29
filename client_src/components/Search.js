@@ -13,8 +13,6 @@ import {
   MoreTab, BackTab, LoadingTab,
 } from './Tabs.js';
 
-
-
 export default class Search extends Component{
   constructor(props){
     super(props);
@@ -28,7 +26,6 @@ export default class Search extends Component{
   }
 
   clear(){
-    console.log('cleared');
     this.setState({
       data: null,
       error: null,
@@ -59,16 +56,14 @@ export default class Search extends Component{
 
   search(){
     this.props.asyncCreator(
-      api.spotify.search({ query: this.state.query }),
-      {
+      api.spotify.search({ query: this.state.query }), {
+      on: {
         pending: () => this.setState({ pending: true }), 
         response: (data) => this.setState({
           pending: false,
           data: data.payload,
           error: data.error
-        })
-      }
-    )
+    })}})
   }
 
   render(){
@@ -83,6 +78,7 @@ export default class Search extends Component{
         {data &&
           <DropDown 
             data={data}
+            asyncCreator={this.props.asyncCreator}
             pending={pending}
           />
         }
@@ -114,27 +110,11 @@ const SearchBar = (props) => {
   )
 }
 
-const typesData = [
-  [
-    'tracks', {
-      name : "Tracks",
-      tab: TrackTab,
-  }],[
-    'artists', {
-      name : "Artists",
-      tab : ArtistTab
-  }],[
-    'albums', {
-      name : "Albums",
-      tab : AlbumTab
-    }
-  ]
-]
-
 const list = [
   Object.assign(new Track(), { tab : TrackTab }),
-  Object.assign(new Artist(), { tab : ArtistTab }),
-  Object.assign(new Album(), { tab : AlbumTab })
+  //Object.assign(new Artist(), { tab : ArtistTab }),
+  Object.assign(new Album(), { tab : AlbumTab }),
+
 ]
 
 class DropDown extends Component{
@@ -192,6 +172,7 @@ class DropDown extends Component{
                     collection={collection}
                     data={data[type]}
                     limit={limit}
+                    asyncCreator={this.props.asyncCreator}
                   /> 
                   {length > limit && 
                     <MoreTab 
@@ -213,10 +194,9 @@ class DropDown extends Component{
 }
 
 const TypeDisplay = (props) => {
-  const { collection, data, limit } = props;
+  const { collection, data, limit, asyncCreator } = props;
   const Tab = collection.tab;
   const limitedItems = limit ? data.items.slice(0, limit) : data.items;
-
   return (
     <div>
       {
@@ -224,7 +204,7 @@ const TypeDisplay = (props) => {
           return(
             <div key={index}>
               {React.createElement(Tab, { 
-                data: itemData,
+                data: itemData, asyncCreator
               })}
             </div>
           )

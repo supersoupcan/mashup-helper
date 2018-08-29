@@ -3,10 +3,12 @@ import loggerMiddleware from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 
 import auth from './reducers/auth';
-import collections from './reducers/collections';
+import trackbank from './reducers/trackbank';
+
+import trackbankData from './test/trackbankData';
 
 export default createStore(
-  combineReducers({ auth, collections }),{
+  combineReducers({ auth, trackbank }),{
     auth: {
       session: null,
       ui: {
@@ -14,7 +16,7 @@ export default createStore(
         error: null
       },
     },
-    collections : []
+    trackbank: trackbankData
   },
   applyMiddleware(thunkMiddleware, loggerMiddleware)
 )

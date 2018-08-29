@@ -1,0 +1,152 @@
+.container{
+  width: 100%;
+}
+
+.legend{
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  background-color: black;
+  border: 0.5px solid black;
+  color: white;
+  font-size: 14px;
+  height: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.legendImageBreak{
+  width: 48px;
+  border-right: 0.5px solid black;
+}
+
+.legendAlign{
+  min-width: 0px;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.legendTrack{
+  padding-left: 6px;
+  flex: 3;
+  text-align: left;
+}
+
+.legendTime{
+  padding-left: 12px;
+  flex: 1;
+  text-align: left;
+}
+
+.legendKey{
+  padding-left: 12px;
+  flex: 1;
+  text-align: left;
+}
+
+.legendTempo{
+  padding-left: 12px;
+  flex: 1;
+  text-align: right;
+}
+
+.legendButtons{
+  padding-left: 12px;
+  padding-right: 12px;
+  flex: 1;
+}
+
+.track{
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border: 0.5px solid black;
+  border-bottom: none;
+}
+
+.trackEnd{
+  composes: track;
+  border-bottom: 0.5px solid black;
+}
+
+.image{
+  width: 48px;
+  height: 48px;
+  background-color: grey;
+  border-right: 0.5px solid black;
+}
+
+.duration{
+  padding-left: 12px;
+  flex: 1;
+  text-align: left;
+  font-size: 18px;
+}
+
+.key{
+  padding-left: 12px;
+  flex: 1;
+  text-align: left;
+  font-size: 18px;
+}
+
+.tempo{
+  padding-left: 12px;
+  flex: 1;
+  text-align: right;
+}
+
+.buttons{
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.content{
+  min-width: 0px;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.labels{
+  padding-left: 6px;
+  flex: 3;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  min-width: 0px;
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bpm{
+  font-size: 18px;
+}
+
+.bpmWord{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.name{
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artist{
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

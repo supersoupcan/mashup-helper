@@ -1,0 +1,99 @@
+.container{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.padding{
+  padding: 6px;
+}
+
+.filterHolder{
+  
+  flex: 1;
+  position: relative;
+}
+
+.filter{
+  border: 1px solid black;
+  border-radius: 5px;
+  flex: 1;
+  margin: 0px;
+  width: 320px;
+  padding: 6px;
+}
+
+.dropDown{
+  position: absolute;
+  width: 100%;
+  max-width: 414px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  border-top: none;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.filterName{
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+}
+
+.filterTools{
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  flex-wrap: row;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.filterTool{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  flex: 1;
+}
+
+.toolName{
+  font-size: 14px;
+  padding-bottom: 4px;
+}
+
+.targetTempo{
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 18px;
+  border: 1px solid black;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.targetTempo input{
+  height: 22px;
+  box-sizing: border-box;
+  text-align: right;
+  font-size: 18px;
+  max-width: 30px;
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.bpmWord{
+  white-space: pre;
+  font-size: 12px;
+  font-weight: bold;
+}

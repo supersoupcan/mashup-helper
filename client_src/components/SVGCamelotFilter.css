@@ -7,6 +7,10 @@
   user-select: none;
 }
 
+.section:hover path{
+  opacity: 0.50;
+}
+
 .camelotName{
   composes : unselectable;
   font-size: 16px;

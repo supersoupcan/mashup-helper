@@ -34,12 +34,12 @@
 
 .home{
   font-size: 24px;
-  padding: 0px 12px;
+  padding-left: 12px;
 }
 
 .route{
   font-size: 20px;
-  padding: 0px 12px;
+  padding-left: 12px;
 }
 
 .activeRoute{
@@ -49,6 +49,7 @@
 
 .authentication{
   padding-right: 12px;
+  padding-left: 12px;
   display: flex;
   align-items: center;
   font-size: 16px;

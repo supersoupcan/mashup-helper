@@ -23,9 +23,6 @@ class Navbar extends Component{
               activeClassName={styles.activeRoute}>
               Track Bank
             </NavLink>
-            <div className={styles.route}>
-              Organize
-            </div>
           </div>
           <div className={styles.groupRight}>
             <span className={styles.authentication}>

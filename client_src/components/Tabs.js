@@ -3,6 +3,8 @@ import React from 'react';
 import FA from 'react-fontawesome';
 import styles from './Tabs.css';
 
+import api from '../api';
+
 const MoreTab = (props) => (
   <div className={styles.moreTab} onClick={props.setActive}>
     <div>
@@ -28,7 +30,7 @@ const BackTab = (props) => (
 )
 
 const AddIcon = (props) => (
-  <div>
+  <div onClick={props.add}>
     <FA name="fas fa-plus" size="2x" className={styles.add}/>
   </div>
 )
@@ -51,9 +53,18 @@ const ResultsTab = (props) => {
 }
 
 const TrackTab = (props) => {
-  const data = props.data;
+  const { data, asyncCreator }  = props;
   const artists = data.artists.map((artist) => artist.name);
   const image = data.album.images[data.album.images.length - 1];
+
+
+  function add(){
+    asyncCreator(api.spotify.trackAudioFeat(data.id), {
+      on: { resolve: "ADD_TRACK" },
+      meta: { track: data }
+    })
+  }
+
   return (
     <div className={styles.tab}>
       <img 
@@ -64,13 +75,13 @@ const TrackTab = (props) => {
         <div className={styles.label}>{ data.name }</div>
         <div className={styles.subLabel}>{ artists.join(' - ') }</div>
       </div>
-      <AddIcon />
+      <AddIcon add={add}/>
     </div>
   )
 }
 
 const ArtistTab = (props) => {
-  const data = props.data;
+  const {data, add } =  props;
   const image = data.images[data.images.length - 1];
   return(
     <div className={styles.tab}>
@@ -81,15 +92,23 @@ const ArtistTab = (props) => {
       <div className={styles.labelTab}>
         <div className={styles.label}>{ data.name }</div>
       </div>
-      <AddIcon />
+      <AddIcon add={add} />
     </div>
   )
 }
 
 const AlbumTab = (props) => {
-  const data = props.data;
+  const { data, asyncCreator } = props;
   const image = data.images[data.images.length - 1];
   const artists = data.artists.map((artist) => artist.name);
+
+  function add(){
+    asyncCreator(api.spotify.albumTrackAudioFeats(data.id, data.total_tracks), {
+      on: { resolve: 'ADD_TRACKS' },
+      meta: { album : data }
+    })
+  }
+
   return (
     <div className={styles.tab}>
       <img
@@ -100,7 +119,7 @@ const AlbumTab = (props) => {
         <div className={styles.label}>{ data.name }</div>
         <div className={styles.subLabel}>{ artists.join (' - ') }</div>
       </div>
-      <AddIcon />
+      <AddIcon add={add}/>
     </div>
   )
 }

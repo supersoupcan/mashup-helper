@@ -23,16 +23,18 @@ class App extends Component{
 
   componentDidMount(){
     this.props.asyncCreator(api.auth.session(), {
-      pending : 'AUTH_UI_PENDING',
-      response: 'AUTH_UI_RESPONSE',
-      resolve : 'AUTH_SESSION_RESOLVE',
+      on: {
+        pending: 'AUTH_UI_PENDING',
+        response: 'AUTH_UI_RESPONSE',
+        resolve: 'AUTH_SESSION_RESOLVE',
+      }
     })
   }
 
   createPageRoute(index, pageRoute){
     const { path, exact, title, component, props } = pageRoute;
-    const { asyncCreator, auth } = this.props;
-    const commonProps = { asyncCreator, auth };
+    const { asyncCreator, dispatch, auth } = this.props;
+    const commonProps = { asyncCreator, auth, dispatch };
 
     return (
       <Route path={path} exact={exact} key={index}>
@@ -57,17 +59,17 @@ class App extends Component{
   }
   render(){
     const pageRoutes = [{
-      path : '/',
-      exact : true,
-      title : 'Mashup Helper',
-      component : Home,
-      props : {}
+      path: '/',
+      exact: true,
+      title: 'Mashup Helper',
+      component: Home,
+      props: {}
     },{
-      path : '/select',
-      exact : false,
-      title : 'Track Bank',
-      component : Select,
-      props : { collections : this.props.collections }
+      path: '/select',
+      exact: false,
+      title: 'Track Bank',
+      component: Select,
+      props: { trackbank: this.props.trackbank }
     }]
     
     return(
@@ -91,7 +93,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   auth : state.auth,
-  collections: state.collections
+  trackbank: state.trackbank
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

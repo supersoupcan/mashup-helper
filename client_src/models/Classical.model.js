@@ -1,5 +1,3 @@
-import CamelotModel from './Camelot.model';
-
 const ClassicalModel = function(){
   this.notes = [
     {name: "B", order: 11, white: true},
@@ -13,7 +11,7 @@ const ClassicalModel = function(){
     {name: "G", order: 7, white: true},
     {name: "D", order: 2, white: true},
     {name: "A", order: 9, white: true},
-    {name: "E", order: 4, white: true},
+    {name: "E", order: 4, white: true}
   ]
 }
 
@@ -24,22 +22,21 @@ ClassicalModel.prototype = {
       return Object.assign({}, this.notes[orderIndex], { index: orderIndex });
     })
   },
-  find : function(index){
+  find: function(index){
+    let note, mode;
+
     if(index < 12){
-      return ({
-        note: this.notes[index],
-        mode: {
-          name: 'major', symbol: '', index: 0,
-        }
-      })
+      note = this.notes[index];
+      mode = {
+        name: 'major', symbol: '', index : 0
+      }
     }else{
-      return ({
-        note: this.notes[(index - 9) % 12],
-        mode: {
-          name: 'minor', symbol: 'm', index: 1,
-        }
-      })
+      note = this.notes[(index + 3) % 12];
+      mode = {
+        name: 'minor', symbol: 'm', index: 1
+      }
     }
+    return ({ note, mode, index })
   }
 }
 

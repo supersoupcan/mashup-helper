@@ -1,17 +1,38 @@
 .container{
+  box-sizing: border-box;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 12px;
+  padding: 12px;
+}
+
+.toolTitle{
+  font-family: 'Courier New', Courier, monospace;
+  padding-bottom: 6px;
+  font-size: 20px;
+}
+
+.tools{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 12px;
+}
+
+.signIn{
+  padding-bottom: 6px;
 }
 
 .add{
-
+  flex: 1;
 }
 
-.collections{
-
+.filters{
+  flex: 2;
 }
 
 .title{

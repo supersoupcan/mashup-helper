@@ -2,7 +2,7 @@
   fill : rgb(225, 225, 225);
   
   stroke : black;
-  stroke-width : 2;
+  stroke-width : 1;
 }
 .white:hover{
   fill : rgb(255, 255, 255);
@@ -11,7 +11,7 @@
 .black{
   fill : black;
   stroke : black;
-  stroke-width : 2;
+  stroke-width : 1;
 }
 
 .black:hover{

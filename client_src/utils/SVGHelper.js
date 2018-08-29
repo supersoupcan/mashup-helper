@@ -12,6 +12,7 @@ export const SVGRing = function(divisions, offset, rx0, ry0, rx1, ry1){
     path.arcTo(rx0, ry0, x1 * rx0, y1 * ry0, 0, 1);
     path.lineTo(x1 * rx1, y1 * ry1);
     path.arcTo(rx1, ry1, x0 * rx1, y0 * ry1, 0, 0);
+    path.lineTo(x0 * rx0, y0 * ry0);
     
     const leftX = (x0 * rx1 + x1 * rx1) / 2;
     const rightX = (x0 * rx0 + x1 * rx0) / 2;

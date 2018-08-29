@@ -1,26 +1,32 @@
 import config from '../config';
 
-export default function asyncCreator(promise, events){
-  const { pending, response, resolve, reject } = events;
-  //Provides a basic interface for handling async requests
-  
+//Provides a basic interface for handling async requests
+//use meta parameter to pass additional contextual data to callback
+
+export default function asyncCreator(promise, options){
+  const { pending, response, resolve, reject } = options.on;
+  const meta = options.meta || null;
+
   //pending: fires when before async action is attempted
   //responsed: fires on any async callback
   //resolved: fires on successful async callback
-  //rejected: fires on failed async callback 
+  //rejected: fires on failed async callback
 
   return async function(dispatch){
-    function faciliateCallbacks(callbacks, data){
+    function facilitateCallbacks(callbacks, data){
       function run(callback){
         switch(typeof callback){
           case 'function': {
             //Call function
-            callback(data);
+            callback(data, meta);
             break;
           }
           case 'string': {
             //Dispatch as redux action type
-            dispatch(Object.assign({}, { type : callback }, data ));
+            dispatch(Object.assign({}, { 
+              type: callback, 
+              meta: meta 
+            }, data ));
             break;
           }
         }
@@ -33,7 +39,7 @@ export default function asyncCreator(promise, events){
         run(callbacks);
       }
     }
-    if(pending) faciliateCallbacks(pending, {});
+    if(pending) facilitateCallbacks(pending, {});
     try{
       const res = await Promise.race([
         promise,
@@ -45,12 +51,12 @@ export default function asyncCreator(promise, events){
       if(res.status >= 400){
         throw new Error('Error: ' + res.statusText);
       }else{
-        if(response) faciliateCallbacks(response, { payload: res.data })
-        if(resolve) faciliateCallbacks(resolve, { payload: res.data });
+        if(response) facilitateCallbacks(response, { payload: res.data })
+        if(resolve) facilitateCallbacks(resolve, { payload: res.data });
       }
     }catch(error){
-      if(response) faciliateCallbacks(response, { error: error })
-      if(reject) createCommands(reject, { error: error });
+      if(response) facilitateCallbacks(response, { error })
+      if(reject) facilitateCallbacks(reject, { error });
     }
   }
 }
