@@ -30,7 +30,7 @@ const BackTab = (props) => (
 )
 
 const AddIcon = (props) => (
-  <div onClick={props.add}>
+  <div>
     <FA name="fas fa-plus" size="2x" className={styles.add}/>
   </div>
 )
@@ -66,7 +66,7 @@ const TrackTab = (props) => {
   }
 
   return (
-    <div className={styles.tab}>
+    <div className={styles.tab} onClick={add}>
       <img 
         className={styles.image} 
         src={image ? image.url : null}
@@ -92,7 +92,7 @@ const ArtistTab = (props) => {
       <div className={styles.labelTab}>
         <div className={styles.label}>{ data.name }</div>
       </div>
-      <AddIcon add={add} />
+      <AddIcon />
     </div>
   )
 }
@@ -110,7 +110,7 @@ const AlbumTab = (props) => {
   }
 
   return (
-    <div className={styles.tab}>
+    <div className={styles.tab} onClick={add}>
       <img
         className={styles.image}
         src={image ? image.url : null}
@@ -119,7 +119,7 @@ const AlbumTab = (props) => {
         <div className={styles.label}>{ data.name }</div>
         <div className={styles.subLabel}>{ artists.join (' - ') }</div>
       </div>
-      <AddIcon add={add}/>
+      <AddIcon/>
     </div>
   )
 }

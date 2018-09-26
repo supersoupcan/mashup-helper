@@ -28,33 +28,45 @@
 }
 
 .legendTrack{
+  display: flex;
   padding-left: 6px;
   flex: 3;
   text-align: left;
+  cursor: pointer;
 }
 
 .legendTime{
+  display: flex;
   padding-left: 12px;
   flex: 1;
   text-align: left;
+  cursor: pointer;
 }
 
 .legendKey{
+  display: flex;
   padding-left: 12px;
   flex: 1;
   text-align: left;
+  cursor: pointer;
 }
 
 .legendTempo{
+  display: flex;
   padding-left: 12px;
   flex: 1;
-  text-align: right;
+  justify-content: flex-end;
+  cursor: pointer;
 }
 
 .legendButtons{
   padding-left: 12px;
   padding-right: 12px;
   flex: 1;
+}
+
+.sortIcon{
+  padding-right: 6px;
 }
 
 .track{
@@ -91,15 +103,18 @@
   flex: 1;
   text-align: left;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .tempo{
   padding-left: 12px;
   flex: 1;
   text-align: right;
+  cursor: pointer;
 }
 
 .buttons{
+  cursor: pointer;
   display: flex;
   flex: 1;
   justify-content: flex-end;
@@ -130,11 +145,13 @@
 
 .bpm{
   font-size: 18px;
+  cursor: pointer;
 }
 
 .bpmWord{
   font-size: 12px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .name{

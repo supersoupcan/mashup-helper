@@ -28,7 +28,11 @@
 }
 
 .add{
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
   flex: 1;
+  flex-direction: column;
 }
 
 .filters{

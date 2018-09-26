@@ -24,11 +24,11 @@ export const SVGRing = function(divisions, offset, rx0, ry0, rx1, ry1){
     const cy = (topY + botY) / 2;
 
     return {
-      d : path.d,
-      lowX : (cx + leftX) / 2,
-      lowY : (cy + topY) / 2,
-      highX : (cx + rightX) / 2,
-      highY : (cy + botY) / 2,
+      d: path.d,
+      lowX: (cx + leftX) / 2,
+      lowY: (cy + topY) / 2,
+      highX: (cx + rightX) / 2,
+      highY: (cy + botY) / 2,
     }
   })
 }
@@ -41,13 +41,13 @@ SVGPath.prototype = {
   get d(){
     return this.actions.join(' ');
   },
-  moveTo : function(x, y){
+  moveTo: function(x, y){
     this.actions.push(['M', x, y].join(' '));
   },
-  lineTo : function(x, y){
+  lineTo: function(x, y){
     this.actions.push(['L', x, y].join(' '));
   },
-  arcTo : function(rx, ry, x, y, lf, sf){
+  arcTo: function(rx, ry, x, y, lf, sf){
     this.actions.push(['A', rx, ry, 0, lf, sf, x, y].join(' '));
   }
 }

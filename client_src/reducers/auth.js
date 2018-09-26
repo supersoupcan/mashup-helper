@@ -5,13 +5,13 @@ const ui = (state = {}, action) => {
   switch(type){
     case 'AUTH_UI_PENDING' : {
       return state = Object.assign({}, state, {
-        pending : true,
-        error : null
+        pending: true,
+        error: null
       })
     }case 'AUTH_UI_RESPONSE' : {
       return state = Object.assign({}, state, {
-        pending : false,
-        error : error
+        pending: false,
+        error: error
       })
     }
   }

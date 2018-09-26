@@ -37,7 +37,7 @@ ClassicalModel.prototype = {
       }
     }
     return ({ note, mode, index })
-  }
+  },
 }
 
 export default new ClassicalModel();

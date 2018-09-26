@@ -154,6 +154,7 @@ class DropDown extends Component{
             <TypeDisplay
               collection={activeCollection}
               data={data[activeCollection.type + 's']}
+              asyncCreator={this.props.asyncCreator}
             />
           </div>
         )
